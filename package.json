@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --color --mode=development",
+    "build": "webpack --mode=production"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
