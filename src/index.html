@@ -1,8 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=320">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 100%;
+            overflow-y: scroll;
+        }
+        html, body {
+            height: 100%;
+        }
+    </style>
+
+    <% if (htmlWebpackPlugin.options.yandexMetrika) { %>
+    <!-- Yandex.Metrika counter -->
+
+    <!-- /Yandex.Metrika counter -->
+    <% } %>
 </head>
 <body>
 <div id="app"></div>
