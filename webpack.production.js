@@ -1,12 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-const common = require('./webpack.common');
-
 module.exports = {
-    ...common,
     output: {
         path: path.resolve(__dirname, 'build'),
         publicPath: '/',
@@ -14,13 +12,22 @@ module.exports = {
         chunkFilename: '[id].[chunkhash].js',
     },
     plugins: [
-        new CleanWebpackPlugin(['build']),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             inject: 'body',
             template: 'src/index.html',
             title: 'Title',
-            yandexMetrika: true,
         }),
         new VueLoaderPlugin(),
     ],
+    optimization: {
+        minimizer: [ new TerserPlugin({
+            sourceMap: true,
+            terserOptions: {
+                compress: {
+                    pure_funcs: ['console.log'],
+                },
+            }
+        })]
+    },
 };

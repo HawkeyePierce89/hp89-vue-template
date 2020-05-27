@@ -12,6 +12,7 @@ module.exports = {
         "vue/html-indent": ["error", 4],
         'no-new': 0,
         "indent": ["error", 4],
-        "max-len": 0
+        "max-len": 0,
+        "arrow-parens": ["error", "as-needed"],
     }
 };
